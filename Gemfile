@@ -41,6 +41,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'html2haml'
 gem 'kaminari'
+gem 'acts_as_votable'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

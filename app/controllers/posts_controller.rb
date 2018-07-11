@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_post,only: [:show, :edit, :update, :destroy, :own_post]
+  before_action :set_post,only: [:show, :edit, :update, :destroy, :like]
   before_action :own_post, only: [:edit, :update, :destroy]
 
 
@@ -48,6 +48,15 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path
+  end
+
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_back fallback_location: profile_path }
+        format.js
+      end
+    end
   end
 
 
